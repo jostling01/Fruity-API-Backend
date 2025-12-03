@@ -51,7 +51,7 @@ class Fruit{
         }
     }
 
-    destroy(data) {
+    destroy() {
         const destroyedFruit = fruits.find(fruit => fruit.name.toLowerCase() == this.name.toLowerCase()) // Finds the raw fruit object in the fruits array that matches the current instance (this.name)/user input
 
         if(destroyedFruit) { // checks if fruit entered by user is truthy
