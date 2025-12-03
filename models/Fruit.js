@@ -23,12 +23,23 @@ class Fruit{
         }
     }
     
-    static create = (data) => { // takes the name passed in from user input URL , called in controller
-        const newFruit = data // assigns the user input fruit to the variable newFruit
-        newFruit['id'] = fruits.length + 1
-        fruits.push(newFruit) // pushes the new object into the in-memory fruits array
-        return new Fruit(newFruit) // returns new Fruit instance of the new fruit
+    static create = (data) => {
+        const newFruit = data
+        const updatedFruit = fruits.find((fruit) => fruit.name.toLowerCase() == newFruit.name.toLowerCase())
+        if (!updatedFruit) {
+            newFruit["id"] = fruits.length + 1
+            fruits.push(newFruit)
+            return new Fruit(newFruit)
+        } else {
+            throw Error("Fruit already exists")
+        }
     }
+
+    // takes the name passed in from user input URL , called in controller
+    // assigns the user input fruit to the variable newFruit
+    // assigns the new fruit an id equal to the length of the in-memory fruits array + 1
+    // pushes the new object into the in-memory fruits array
+    // returns new Fruit instance of the new fruit
 
     update(data) {
         const updatedFruit = fruits.find(fruit => fruit.name.toLowerCase() == this.name.toLowerCase()) // Finds the raw fruit object in the fruits array that matches the current instance (this.name)/user input
