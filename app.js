@@ -1,8 +1,10 @@
 const express = require('express') // loads the express library so it can be used in our code
+const cors = require('cors')
 const app = express()
 const fruitRouter = require('./routes/fruits') // imports fruit router which loads routes file containing our routes
 const logger = require('./logger') // imports logger function that logs information about incoming requests
 
+app.use(cors()) 
 app.use(logger) // runs logger on every request
 app.use(express.json()) // converts json files into fomrat our code can interact with
 
